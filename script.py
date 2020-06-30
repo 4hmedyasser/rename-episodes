@@ -1,6 +1,8 @@
 import os
 import imdb
 
+invalid_characters="~\"#%&*:<>?/\{|}"
+
 ia=imdb.IMDb()
 
 series_id=input("Enter series ID (Number preceeding tt in the IMDb's series URL): ")
@@ -11,6 +13,7 @@ seasons=sorted(series['episodes'].keys())
 episodes=series.data['episodes']
 
 series_path=input("Enter series absolute path (The directory carrying the seasons' directories sorted): ")
+
 series_path=os.path.abspath(series_path)
 os.chdir(series_path)
 
@@ -40,10 +43,24 @@ for i in seasons:
                 os.rename(k, "S"+str(i)+"E0"+str(j)+"."+title+ext)
             except OSError:
                 print("Inavlid title: "+k+" -> "+"S"+str(i)+"E0"+str(j)+"."+title+ext)
+                for c in title:
+                    if c in invalid_characters:
+                        title=title.replace(c, "")
+                        os.rename(k, "S"+str(i)+"E0"+str(j)+"."+title+ext)
+                        print("Title modified: "+"S"+str(i)+"E0"+str(j)+"."+title+ext+"\n")
+                    else:
+                        pass
         else:
             try:
                 os.rename(k, "S"+str(i)+"E"+str(j)+"."+title+ext)
             except OSError:
                 print("Inavlid title: "+k+" -> "+"S"+str(i)+"E"+str(j)+"."+title+ext)
+                for c in title:
+                    if c in invalid_characters:
+                        title=title.replace(c, "")
+                        os.rename(k, "S"+str(i)+"E"+str(j)+"."+title+ext)
+                        print("Title modified: "+"S"+str(i)+"E"+str(j)+"."+title+ext+"\n")
+                    else:
+                        pass
         j+=1
 print("Done!")
