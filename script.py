@@ -38,29 +38,55 @@ for i in seasons:
             break
         title=episode['title']
         ext=os.path.splitext(k)[1]
-        if j<10:
-            try:
-                os.rename(k, "S"+str(i)+"E0"+str(j)+"."+title+ext)
-            except OSError:
-                print("Inavlid title: "+k+" -> "+"S"+str(i)+"E0"+str(j)+"."+title+ext)
-                for c in title:
-                    if c in invalid_characters:
-                        title=title.replace(c, "")
-                        os.rename(k, "S"+str(i)+"E0"+str(j)+"."+title+ext)
-                        print("Title modified: "+"S"+str(i)+"E0"+str(j)+"."+title+ext+"\n")
-                    else:
-                        pass
+        if i<10:
+            if j<10:
+                try:
+                    os.rename(k, "S0"+str(i)+"E0"+str(j)+"."+title+ext)
+                except OSError:
+                    print("Inavlid title: "+k+" -> "+"S0"+str(i)+"E0"+str(j)+"."+title+ext)
+                    for c in title:
+                        if c in invalid_characters:
+                            title=title.replace(c, "")
+                            os.rename(k, "S0"+str(i)+"E0"+str(j)+"."+title+ext)
+                            print("Title modified: "+"S0"+str(i)+"E0"+str(j)+"."+title+ext+"\n")
+                        else:
+                            pass
+            else:
+                try:
+                    os.rename(k, "S0"+str(i)+"E"+str(j)+"."+title+ext)
+                except OSError:
+                    print("Inavlid title: "+k+" -> "+"S0"+str(i)+"E0"+str(j)+"."+title+ext)
+                    for c in title:
+                        if c in invalid_characters:
+                            title=title.replace(c, "")
+                            os.rename(k, "S0"+str(i)+"E"+str(j)+"."+title+ext)
+                            print("Title modified: "+"S0"+str(i)+"E"+str(j)+"."+title+ext+"\n")
+                        else:
+                            pass
         else:
-            try:
-                os.rename(k, "S"+str(i)+"E"+str(j)+"."+title+ext)
-            except OSError:
-                print("Inavlid title: "+k+" -> "+"S"+str(i)+"E"+str(j)+"."+title+ext)
-                for c in title:
-                    if c in invalid_characters:
-                        title=title.replace(c, "")
-                        os.rename(k, "S"+str(i)+"E"+str(j)+"."+title+ext)
-                        print("Title modified: "+"S"+str(i)+"E"+str(j)+"."+title+ext+"\n")
-                    else:
-                        pass
+            if j<10:
+                try:
+                    os.rename(k, "S"+str(i)+"E0"+str(j)+"."+title+ext)
+                except OSError:
+                    print("Inavlid title: "+k+" -> "+"S"+str(i)+"E0"+str(j)+"."+title+ext)
+                    for c in title:
+                        if c in invalid_characters:
+                            title=title.replace(c, "")
+                            os.rename(k, "S"+str(i)+"E0"+str(j)+"."+title+ext)
+                            print("Title modified: "+"S"+str(i)+"E0"+str(j)+"."+title+ext+"\n")
+                        else:
+                            pass
+            else:
+                try:
+                    os.rename(k, "S"+str(i)+"E"+str(j)+"."+title+ext)
+                except OSError:
+                    print("Inavlid title: "+k+" -> "+"S"+str(i)+"E"+str(j)+"."+title+ext)
+                    for c in title:
+                        if c in invalid_characters:
+                            title=title.replace(c, "")
+                            os.rename(k, "S"+str(i)+"E"+str(j)+"."+title+ext)
+                            print("Title modified: "+"S"+str(i)+"E"+str(j)+"."+title+ext+"\n")
+                        else:
+                            pass
         j+=1
 print("Done!")
