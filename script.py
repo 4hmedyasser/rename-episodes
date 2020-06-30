@@ -3,19 +3,14 @@ import imdb
 
 ia=imdb.IMDb()
 
-#series_id=input("Enter series ID (Number preceeding tt in the IMDb's series URL): ")
-
-series_id='5180504'
+series_id=input("Enter series ID (Number preceeding tt in the IMDb's series URL): ")
 
 series=ia.get_movie(series_id)
 ia.update(series, 'episodes')
 seasons=sorted(series['episodes'].keys())
 episodes=series.data['episodes']
 
-#series_path=input("Enter series absolute path (The directory carrying the seasons' directories sorted): ")
-
-series_path="/home/phate/rename-episodes/The Witcher"
-
+series_path=input("Enter series absolute path (The directory carrying the seasons' directories sorted): ")
 series_path=os.path.abspath(series_path)
 os.chdir(series_path)
 
