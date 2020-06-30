@@ -36,8 +36,14 @@ for i in seasons:
         title=episode['title']
         ext=os.path.splitext(k)[1]
         if j<10:
-            os.rename(k, "S"+str(i)+"E0"+str(j)+"."+title+ext)
+            try:
+                os.rename(k, "S"+str(i)+"E0"+str(j)+"."+title+ext)
+            except OSError:
+                print("Inavlid title: "+k+" -> "+"S"+str(i)+"E0"+str(j)+"."+title+ext)
         else:
-            os.rename(k, "S"+str(i)+"E"+str(j)+"."+title+ext)
+            try:
+                os.rename(k, "S"+str(i)+"E"+str(j)+"."+title+ext)
+            except OSError:
+                print("Inavlid title: "+k+" -> "+"S"+str(i)+"E"+str(j)+"."+title+ext)
         j+=1
 print("Done!")
