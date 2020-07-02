@@ -55,7 +55,7 @@ for i in seasons:
                 try:
                     os.rename(k, "S0"+str(i)+"E"+str(j)+"."+title+ext)
                 except OSError:
-                    print("Inavlid title: "+k+" -> "+"S0"+str(i)+"E0"+str(j)+"."+title+ext)
+                    print("Inavlid title: "+k+" -> "+"S0"+str(i)+"E"+str(j)+"."+title+ext)
                     for c in title:
                         if c in invalid_characters:
                             title=title.replace(c, "")
