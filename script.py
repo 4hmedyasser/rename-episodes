@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.insert(0, './imdb')
+sys.path.insert(0, "./cinemagoer")
 import imdb
 
 invalid_characters="~\"#%&*:<>?/\{|}"
